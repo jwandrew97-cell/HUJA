@@ -9,7 +9,8 @@ field_area = 1.7201431257141546 # COSMOS
 field_area = 0.6536 # Euclid COSMOS #TODO: check which one i neeeeed
 
 # TODO: Workout the argument we need to pass to the function and which ones are intrinsic
-# TODO: Decide the output of the function i.e. in list or fits?
+# TODO: Decide the output of the function i.e. in list or fits? -> Possibly a numpy array and \
+# create a seperate function for converting the array output to a fits?
 # TODO: Add docstring to the function
 
 def calc_vmax_from_z(field_area, zmin, zmax, dz=0.1):
