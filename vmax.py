@@ -13,7 +13,7 @@ field_area = 0.6536 # Euclid COSMOS #TODO: check which one i neeeeed
 # create a seperate function for converting the array output to a fits?
 # TODO: Add docstring to the function
 
-def calc_vmax_from_z(field_area, zmin, zmax, dz=0.1):
+def calc_vmax_from_z(field_area, zmin, zmax, dz=0.01):
     # Define the cosmology
     H = 70
     omegaM = 0.3
@@ -33,14 +33,14 @@ def calc_vmax_from_z(field_area, zmin, zmax, dz=0.1):
         V = field_area_ster/3 * (cosmo.comoving_distance(z)**3 - cosmo.comoving_distance(zmin)**3)
         maximum_V = field_area_ster/3 * (cosmo.comoving_distance(zmax)**3 - cosmo.comoving_distance(zmin)**3)
         Vmax = min(V, maximum_V)
-        Vmaxs.append(Vmax)
-        #print('Vmax =', Vmax)
+        Vmaxs.append(Vmax.value)
+        #print('Vmax =', Vmax.value)
         #print('Maximum Vmax =', maximum_V)
-        
-    return Vmaxs
 
-# test = calc_vmax_from_z(field_area, zmin, zmax)
-# print(test)
+    return np.array(Vmaxs)
+
+test = calc_vmax_from_z(field_area, zmin, zmax)
+print(test)
 
 
 
