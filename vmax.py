@@ -22,18 +22,25 @@ def calc_vmax_from_z(field_area, zmin, zmax, dz=0.1):
     # Convert field area into steradians
     field_area_ster = field_area * (np.pi / 180)**2
 
+    # Initialise list of volumes
+    Vmaxs = []
+
     # Compute the volume
     z = zmin
     while z <= zmax:
-
         z += dz
-
         V = field_area_ster/3 * (cosmo.comoving_distance(z)**3 - cosmo.comoving_distance(zmin)**3)
         maximum_V = field_area_ster/3 * (cosmo.comoving_distance(zmax)**3 - cosmo.comoving_distance(zmin)**3)
         Vmax = min(V, maximum_V)
+        Vmaxs.append(Vmax)
+        #print('Vmax =', Vmax)
+        #print('Maximum Vmax =', maximum_V)
+    return Vmaxs
 
-        print('Vmax =', Vmax)
-        print('Maximum Vmax =', maximum_V)
+# test = calc_vmax_from_z(field_area, zmin, zmax)
+# print(test)
+
+
 
 
 
