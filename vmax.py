@@ -36,6 +36,7 @@ def calc_vmax_from_z(field_area, zmin, zmax, dz=0.1):
         Vmaxs.append(Vmax)
         #print('Vmax =', Vmax)
         #print('Maximum Vmax =', maximum_V)
+        
     return Vmaxs
 
 # test = calc_vmax_from_z(field_area, zmin, zmax)
